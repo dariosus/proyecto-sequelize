@@ -1,0 +1,22 @@
+<%- include("../template/header") %>
+        <h1>My Genres</h1>
+        <a href="/genres/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add Genre!
+          </button>
+        </a>
+        <ul>
+            <% for(let i = 0; i < genres.length; i++) { %>
+                <li>
+                    <a href="/genres/<%=genres[i].id%>">
+                      <%=genres[i].name%>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+        <a href="/genres/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add Genre!
+          </button>
+        </a>
+<%- include("../template/footer") %>

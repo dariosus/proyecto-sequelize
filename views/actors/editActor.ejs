@@ -1,0 +1,47 @@
+<%- include("../template/header") %>
+        <h1>Editing <strong><%=actor.first_name%> <%=actor.last_name%></strong></h1>
+        <a href="/actors">Back to list</a>
+        <% if(typeof errors != 'undefined') { %>
+          <div class="red-alert alert alert-danger" role="alert">
+            <ul>
+              <% for(var i = 0; i < errors.length; i++) { %>
+                <li> <%= errors[i].msg %> </li>
+              <% } %>
+            </ul>
+          </div>
+        <% } %>
+        <form class="crud" action="/actors/edit/<%=actor.id%>?_method=PUT" method="post">
+          <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="<%=actor.first_name%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="<%=actor.last_name%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" name="rating" value="<%=actor.rating%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="favorite_movie">Favorite Movie:</label>
+            <select class="form-control" name="favorite_movie" id="favorite_movie">
+              <% for (let i = 0; i < movies.length; i++) { %>
+                <% if (movies[i].id == actor.favorite_movie_id) { %>
+                  <option value="<%=movies[i].id%>" selected>
+                    <%=movies[i].title%>
+                  </option>
+                <% } else { %>
+                  <option value="<%=movies[i].id%>">
+                    <%=movies[i].title%>
+                  </option>
+                <% } %>
+              <% } %>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="/actors">Back to list</a>
+<%- include("../template/footer") %>

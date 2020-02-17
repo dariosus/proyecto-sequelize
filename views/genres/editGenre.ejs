@@ -1,0 +1,27 @@
+<%- include("../template/header") %>
+        <h1>Editing <strong><%=genre.name%></strong></h1>
+        <a href="/genres">Back to list</a>
+        <% if(typeof errors != 'undefined') { %>
+          <div class="red-alert alert alert-danger" role="alert">
+            <ul>
+              <% for(var i = 0; i < errors.length; i++) { %>
+                <li> <%= errors[i].msg %> </li>
+              <% } %>
+            </ul>
+          </div>
+        <% } %>
+        <form class="crud" action="/genres/edit/<%=genre.id%>?_method=PUT" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%=genre.name%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ranking">Ranking:</label>
+            <input type="text" id="ranking" name="ranking" value="<%=genre.ranking%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="/genres">Back to list</a>
+<%- include("../template/footer") %>

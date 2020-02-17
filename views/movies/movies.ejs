@@ -1,0 +1,27 @@
+<%- include("../template/header") %>
+        <h1><%=title%></h1>
+        <div class="links">
+          <a href="/movies">All movies</a>
+          <a href="/movies/new">New movies</a>
+          <a href="/movies/recommended">Recommended movies</a>
+        </div>
+        <a href="/movies/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add movie!
+          </button>
+        </a>
+        <ul>
+            <% for(let i = 0; i < movies.length; i++) { %>
+                <li>
+                    <a href="/movies/<%=movies[i].id%>">
+                      <%=movies[i].title%>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+        <a href="/movies/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add movie!
+          </button>
+        </a>
+<%- include("../template/footer") %>

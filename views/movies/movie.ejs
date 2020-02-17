@@ -1,0 +1,49 @@
+<%- include("../template/header") %>
+        <h1><%=movie.title%></h1>
+        <ul>
+          <li>
+              Rating: <%=movie.rating%>
+          </li>
+          <li>
+              Release Date: <%=movie.release_date%>
+          </li>
+          <li>
+              Awards: <%=movie.awards%>
+          </li>
+          <li>
+              Length: <%=movie.length%>
+          </li>
+          <% if (movie.genre != null) { %>
+            <li>
+                Genre: <a href="/genres/<%=movie.genre.id%>"><%=movie.genre.name%></a>
+            </li>
+          <% } %>
+          <li>
+            Actors:
+            <% if (movie.actors.length > 0) { %>
+              <ul>
+                <% for (let i = 0; i < movie.actors.length; i++) { %>
+                  <li>
+                    <a href="/actors/<%=movie.actors[i].id%>">
+                      <%=movie.actors[i].first_name%> <%=movie.actors[i].last_name%>
+                    </a>
+                  </li>
+                <% } %>
+              </ul>
+            <% } else { %>
+              <p>The movie has no actors yet :(</p>
+            <% } %>
+          </li>
+
+        </ul>
+        <div class="button">
+          <a href="/movies/edit/<%=movie.id%>">
+            <button type="button" name="button" class="btn btn-primary">Edit</button>
+          </a>
+          <form action="/movies/delete?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="<%=movie.id%>">
+            <button type="submit" name="button" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+        <a href="/movies">Back to list</a>
+<%- include("../template/footer") %>

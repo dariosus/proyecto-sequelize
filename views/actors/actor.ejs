@@ -1,0 +1,38 @@
+<%- include("../template/header") %>
+        <h1><%=actor.first_name%> <%=actor.last_name%></h1>
+        <ul>
+          <li>
+              Rating: <%=actor.rating%>
+          </li>
+          <li>
+              Favorite Movie: <a href="/movies/<%=actor.favorite_movie_id%>"><%=actor.favorite_movie.title%></a>
+          </li>
+          <li>
+            Movies:
+            <% if (actor.movies.length > 0) { %>
+              <ul>
+                <% for (let i = 0; i < actor.movies.length; i++) { %>
+                  <li>
+                    <a href="/movies/<%=actor.movies[i].id%>">
+                      <%=actor.movies[i].title%>
+                    </a>
+                  </li>
+                <% } %>
+              </ul>
+            <% } else { %>
+              <p>The actor has no movies yet :(</p>
+            <% } %>
+          </li>
+
+        </ul>
+        <div class="button">
+          <a href="/actors/edit/<%=actor.id%>">
+            <button type="button" name="button" class="btn btn-primary">Edit</button>
+          </a>
+          <form action="/actors/delete?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="<%=actor.id%>">
+            <button type="submit" name="button" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+        <a href="/actors">Back to list</a>
+<%- include("../template/footer") %>

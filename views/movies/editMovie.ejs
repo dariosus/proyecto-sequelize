@@ -1,0 +1,55 @@
+<%- include("../template/header") %>
+        <h1>Editing <strong><%=movie.title%></strong></h1>
+        <a href="/movies">Back to list</a>
+        <% if(typeof errors != 'undefined') { %>
+          <div class="red-alert alert alert-danger" role="alert">
+            <ul>
+              <% for(var i = 0; i < errors.length; i++) { %>
+                <li> <%= errors[i].msg %> </li>
+              <% } %>
+            </ul>
+          </div>
+        <% } %>
+        <form class="crud" action="/movies/edit/<%=movie.id%>?_method=PUT" method="post">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%=movie.title%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" name="rating" value="<%=movie.rating%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="awards">Awards:</label>
+            <input type="text" id="awards" name="awards" value="<%=movie.awards%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="release_date">Release Date:</label>
+            <input type="date" id="release_date" name="release_date" value="<%=onlyDate%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="length">Length:</label>
+            <input type="text" id="length" name="length" value="<%=movie.length%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre:</label>
+            <select class="form-control" name="genre" id="genre">
+              <% for (let i = 0; i < genres.length; i++) { %>
+                <% if (genres[i].id == movie.genre_id) { %>
+                  <option value="<%=genres[i].id%>" selected>
+                    <%=genres[i].name%>
+                  </option>
+                <% } else { %>
+                  <option value="<%=genres[i].id%>">
+                    <%=genres[i].name%>
+                  </option>
+                <% } %>
+              <% } %>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+        <a href="/movies">Back to list</a>
+<%- include("../template/footer") %>

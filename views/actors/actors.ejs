@@ -1,0 +1,22 @@
+<%- include("../template/header") %>
+        <h1>My Actors</h1>
+        <a href="/actors/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add Actor!
+          </button>
+        </a>
+        <ul>
+            <% for(let i = 0; i < actors.length; i++) { %>
+                <li>
+                    <a href="/actors/<%=actors[i].id%>">
+                      <%=actors[i].first_name%> <%=actors[i].last_name%>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+        <a href="/actors/add">
+          <button type="button" name="button" class="btn btn-primary">
+            Add Actor!
+          </button>
+        </a>
+<%- include("../template/footer") %>
