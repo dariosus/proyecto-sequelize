@@ -1,15 +1,7 @@
 <%- include("../template/header") %>
         <h1>Editing <strong><%=genre.name%></strong></h1>
         <a href="/genres">Back to list</a>
-        <% if(typeof errors != 'undefined') { %>
-          <div class="red-alert alert alert-danger" role="alert">
-            <ul>
-              <% for(var i = 0; i < errors.length; i++) { %>
-                <li> <%= errors[i].msg %> </li>
-              <% } %>
-            </ul>
-          </div>
-        <% } %>
+        <%- include("../template/formErrors.ejs"); %>
         <form class="crud" action="/genres/edit/<%=genre.id%>?_method=PUT" method="post">
           <div class="form-group">
             <label for="name">Name:</label>

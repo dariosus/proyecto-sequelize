@@ -1,15 +1,7 @@
 <%- include("../template/header") %>
         <h1>Create an Actor!</h1>
         <a href="/actors">Back to list</a>
-        <% if(typeof errors != 'undefined') { %>
-          <div class="red-alert alert alert-danger" role="alert">
-            <ul>
-              <% for(var i = 0; i < errors.length; i++) { %>
-                <li> <%= errors[i].msg %> </li>
-              <% } %>
-            </ul>
-          </div>
-        <% } %>
+        <%- include("../template/formErrors.ejs"); %>
         <form class="crud" action="/actors/add" method="post">
           <div class="form-group">
             <label for="first_name">First Name:</label>

@@ -1,0 +1,9 @@
+<% if(typeof errors != 'undefined') { %>
+  <div class="red-alert alert alert-danger" role="alert">
+    <ul>
+      <% for(var i = 0; i < errors.length; i++) { %>
+        <li> <%= errors[i].msg %> </li>
+      <% } %>
+    </ul>
+  </div>
+<% } %>
